@@ -1,0 +1,160 @@
+.section {
+  background: var(--bg-secondary);
+  position: relative;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--orange), transparent);
+}
+
+.rulesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3.5rem;
+}
+
+.ruleCard {
+  opacity: 0;
+  transform: translateY(20px);
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  padding: 1.5rem;
+  transition: all 0.25s ease;
+}
+
+.visible .ruleCard {
+  animation: fadeUp 0.5s ease forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.ruleCard:hover {
+  background: var(--bg-card-hover);
+  transform: translateY(-3px);
+}
+
+.ruleIconWrap {
+  width: 2.8rem;
+  height: 2.8rem;
+  border: 1px solid;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ruleIcon { font-size: 1.2rem; }
+
+.ruleTitle {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.ruleDesc {
+  font-size: 0.83rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Flow */
+.flowSection {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: all 0.5s ease 0.4s;
+}
+
+.flowVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.flowTitle {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 1.5rem;
+}
+
+.flowTrack {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  padding: 1.5rem 2rem;
+}
+
+.flowStep {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px dashed var(--border-subtle);
+}
+
+.flowStep:last-child { border-bottom: none; }
+
+.flowNode {
+  border: 1px solid;
+  border-radius: 3px;
+  padding: 0.3rem 0.8rem;
+  min-width: 90px;
+  text-align: center;
+}
+
+.flowFrom {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+}
+
+.flowArrow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+.flowPort {
+  font-size: 0.65rem;
+  opacity: 0.7;
+  min-width: 3rem;
+}
+
+.flowLine {
+  height: 1px;
+  flex: 1;
+  opacity: 0.4;
+}
+
+.flowLabel {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  min-width: 110px;
+}
+
+@media (max-width: 900px) {
+  .rulesGrid { grid-template-columns: 1fr; }
+  .flowTrack { padding: 1rem; }
+  .flowLabel { display: none; }
+}

@@ -1,0 +1,139 @@
+.section {
+  background: var(--bg-secondary);
+  position: relative;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--teal), transparent);
+}
+
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 3rem;
+}
+
+.serviceCard {
+  opacity: 0;
+  transform: translateY(20px);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  padding: 1.5rem;
+  transition: all 0.25s ease;
+}
+
+.visible .serviceCard {
+  animation: fadeUp 0.5s ease forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.serviceCard:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(255,153,0,0.25);
+  transform: translateY(-3px);
+}
+
+.serviceTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.serviceIcon { font-size: 1.6rem; }
+
+.serviceTag {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid;
+  border-radius: 2px;
+  opacity: 0.8;
+}
+
+.serviceName {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.serviceDesc {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Code block */
+.appStack {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: all 0.5s ease 0.5s;
+}
+
+.appVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.appTitle {
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.codeBlock {
+  background: #0d111e;
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  padding: 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.codeLine {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.codeComment {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: #4a5568;
+}
+
+.codeCmd {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: #7dd3fc;
+}
+
+.codeCmd::before {
+  content: '$ ';
+  color: var(--orange);
+}
+
+@media (max-width: 900px) {
+  .servicesGrid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 560px) {
+  .servicesGrid { grid-template-columns: 1fr; }
+}

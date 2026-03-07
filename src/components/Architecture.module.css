@@ -1,0 +1,192 @@
+.section {
+  background: var(--bg-primary);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+/* Flow */
+.flowWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.flowItem {
+  display: grid;
+  grid-template-columns: 3rem 2rem 1fr;
+  gap: 1rem;
+  align-items: start;
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.flowItem.visible {
+  animation: fadeUp 0.5s ease forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.stepBubble {
+  width: 3rem;
+  height: 3rem;
+  border: 2px solid;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-card);
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.flowConnector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 0.25rem;
+  height: 100%;
+  min-height: 5rem;
+}
+
+.line {
+  width: 2px;
+  flex: 1;
+  min-height: 40px;
+  opacity: 0.4;
+}
+
+.flowContent {
+  padding-bottom: 1.5rem;
+}
+
+.stepNum {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.stepLabel {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.4rem;
+}
+
+.stepDesc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Diagram */
+.diagramWrapper {
+  opacity: 0;
+  transform: translateX(20px);
+  transition: all 0.7s ease 0.4s;
+}
+
+.diagramVisible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.diagram {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.diagramTitle {
+  background: rgba(0,0,0,0.3);
+  padding: 0.75rem 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.termCursor {
+  display: inline-block;
+  width: 7px;
+  height: 13px;
+  background: var(--orange);
+  animation: blink 1s step-end infinite;
+}
+
+.diagramContent {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.diagramBox {
+  border: 1px solid;
+  border-radius: 4px;
+  padding: 1rem;
+  background: rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.diagramBoxHeader {
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.diagramMeta {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+.diagramSg {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--teal);
+  background: var(--teal-dim);
+  padding: 0.2rem 0.5rem;
+  border-radius: 2px;
+  align-self: flex-start;
+}
+
+.diagramArrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-align: center;
+  padding: 0.25rem 0;
+}
+
+.diagramNote {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  text-align: center;
+  padding: 0.5rem;
+  border-top: 1px solid var(--border-subtle);
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; gap: 2.5rem; }
+}
